@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hastigheds_Converter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="86" Width="798" ResizeMode="CanMinimize">
+        Title="MainWindow" Height="100" Width="798" ResizeMode="CanMinimize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -16,11 +16,11 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox Name="TextLeft" Grid.Row="1" FontSize="24" TextChanged="TextLeft_TextChanged" PreviewTextInput="TextLeft_PreviewTextInput"/>
-        <TextBox Name="TextRight" Grid.Column="3" Grid.Row="1" FontSize="24" TextChanged="TextRight_TextChanged" PreviewTextInput="TextRight_PreviewTextInput"/>
-        <Button Grid.Column="1" Grid.Row="1" Content="&lt;--&gt;" MaxHeight="40"/>
-        <ComboBox Name="CBLeft"/>
-        <ComboBox Name="CBRight" Grid.Column="2"/>
+        <TextBox Name="TextLeft" Grid.Row="1" FontSize="20" TextChanged="TextLeft_TextChanged" PreviewTextInput="TextLeft_PreviewTextInput"/>
+        <TextBox Name="TextRight" Grid.Column="3" Grid.Row="1" FontSize="24" IsEnabled="False"/>
+        <Button Grid.Column="1" Content="&lt;--&gt;" MaxHeight="40" Click="Button_Click"/>
+        <ComboBox Name="CBLeft" FontSize="20"/>
+        <ComboBox Name="CBRight" Grid.Column="2" FontSize="24"/>
 
     </Grid>
 </Window>

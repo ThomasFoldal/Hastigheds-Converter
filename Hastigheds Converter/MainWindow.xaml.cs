@@ -24,16 +24,19 @@ namespace Hastigheds_Converter
     {
         Dictionary<string, double> units = new Dictionary<string, double>()
         {
-            {"m/s", 1.0},{}
+            {"m/s", 1.0}, {"km/h", 3.6}
         };
-        bool changed = false;
         public MainWindow()
         {
             InitializeComponent();
+            CBLeft.ItemsSource = units.Keys;
+            CBRight.ItemsSource = units.Keys;
+            CBLeft.Text = "m/s";
+            CBRight.Text = "km/h";
         }
-        private double Calulate(int input, double from, double to)
+        private double Calculate(double input, double from, double to)
         {
-            double factor = to * from;
+            double factor = to / from;
             return input * factor;
         }
 
@@ -42,22 +45,21 @@ namespace Hastigheds_Converter
             string text = TextLeft.Text;
             if (text == "")
             {
-
+                TextRight.Text = "";
             }
-            else if (changed == false)
+            else if (text == ",")
             {
-                int input = Convert.ToInt32(text);
-
+                text = "";
             }
             else
             {
-                changed = false;
+                double input = Convert.ToDouble(text);
+                string unitIn = CBLeft.Text;
+                string unitOut = CBRight.Text;
+                double from = units[unitIn];
+                double to = units[unitOut];
+                TextRight.Text = Convert.ToString(Calculate(input, from, to));
             }
-        }
-
-        private void TextRight_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
         }
         protected override void OnPreviewTextInput(TextCompositionEventArgs e)
         {
@@ -67,25 +69,30 @@ namespace Hastigheds_Converter
 
         private bool AreAllValidNumericChars(string str)
         {
+            bool deci = TextLeft.Text.Contains(',');
             foreach (char c in str)
             {
-                if (!Char.IsNumber(c))
+                if (Char.IsNumber(c) || c == ',')
                 {
-                    return false;
+                    if (c == ',' && (TextLeft.Text == "" || deci))
+                    {
+                        return false;
+                    }
+                    return true;
                 }
             }
-
-            return true;
+            return false;
         }
 
         private void TextLeft_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             OnPreviewTextInput(e);
         }
-
-        private void TextRight_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OnPreviewTextInput(e);
+            string temp = CBLeft.Text;
+            CBLeft.Text = CBRight.Text;
+            CBRight.Text = temp;
         }
     }
 }
