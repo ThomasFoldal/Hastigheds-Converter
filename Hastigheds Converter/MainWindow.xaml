@@ -16,11 +16,11 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="1" Text="TextBox"/>
-        <TextBox Grid.Column="3" Grid.Row="1" Text="TextBox"/>
-        <Button Grid.Column="1" Grid.Row="1" Content="Button" MaxHeight="40"/>
-        <ComboBox />
-        <ComboBox Grid.Column="2"/>
+        <TextBox Name="TextLeft" Grid.Row="1" FontSize="24" TextChanged="TextLeft_TextChanged" PreviewTextInput="TextLeft_PreviewTextInput"/>
+        <TextBox Name="TextRight" Grid.Column="3" Grid.Row="1" FontSize="24" TextChanged="TextRight_TextChanged" PreviewTextInput="TextRight_PreviewTextInput"/>
+        <Button Grid.Column="1" Grid.Row="1" Content="&lt;--&gt;" MaxHeight="40"/>
+        <ComboBox Name="CBLeft"/>
+        <ComboBox Name="CBRight" Grid.Column="2"/>
 
     </Grid>
 </Window>
