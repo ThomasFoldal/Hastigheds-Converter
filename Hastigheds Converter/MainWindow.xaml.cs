@@ -24,7 +24,7 @@ namespace Hastigheds_Converter
     {
         Dictionary<string, double> units = new Dictionary<string, double>()
         {
-            {"m/s", 1.0}, {"km/h", 3.6}
+            {"m/s", 1.0}, {"km/h", 3.6}, {"ft/s", 3.28084}, {"knots", 1.94384}, {"mph", 2.236936}
         };
         public MainWindow()
         {
@@ -37,7 +37,8 @@ namespace Hastigheds_Converter
         private double Calculate(double input, double from, double to)
         {
             double factor = to / from;
-            return input * factor;
+            double result =  input * factor;
+            return Math.Round(result, 5);
         }
 
         private void TextLeft_TextChanged(object sender, TextChangedEventArgs e)
