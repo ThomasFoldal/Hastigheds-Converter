@@ -48,10 +48,6 @@ namespace Hastigheds_Converter
             {
                 TextRight.Text = "";
             }
-            else if (text == ",")
-            {
-                text = "";
-            }
             else
             {
                 double input = Convert.ToDouble(text);
